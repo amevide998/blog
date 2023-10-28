@@ -8,6 +8,7 @@
     padding: 2px;
     cursor: pointer;
     position: relative;
+    background-color: lightgray;
 }
 
 .circleToggle{
@@ -16,7 +17,7 @@
     border: rgb(128, 128, 128) 1px solid;
     border-radius: 50%;
     position: absolute;
-    background-color: rgb(128, 128, 128);
+    background-color: black;
     transition: all;
     transition-duration: 1s;
 }
