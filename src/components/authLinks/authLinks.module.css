@@ -1,3 +1,49 @@
 .link {
     cursor: pointer;
 }
+
+.burger {
+    width: 30px;
+    height: 30px;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+}
+
+
+.line1, .line2, .line3 {
+    width: 20px;
+    height: 1px;
+    background-color: var(--textColor);
+}
+
+
+
+.responsiveMenu {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    background-color: var(--bg);
+    height: calc(100vh - 100px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    font-size: 36px;
+}
+
+@media screen and (max-width: 640px) {
+
+    .link {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+}

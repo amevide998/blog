@@ -16,12 +16,12 @@ export default function Navbar() {
                 <Image src={"/youtube.png"} alt={"youtube icon"} width={24} height={24} />
             </div>
             <div className={styles.logo}>janjela</div>
-            <div className={styles.link}>
+            <div className={styles.links}>
                 <ThemeToggle />
-                <Link href={"/"}>Homepage</Link>
-                <Link href={"/"}>Contact</Link>
-                <Link href={"/"}>About</Link>
-                <AuthLinks />
+                <Link href={"/"} className={styles.link}>Homepage</Link>
+                <Link href={"/"} className={styles.link}>Contact</Link>
+                <Link href={"/"} className={styles.link}>About</Link>
+                <AuthLinks className={styles.link} />
             </div>
         </div>
     );
