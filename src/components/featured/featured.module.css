@@ -52,6 +52,9 @@
     .title {
         font-size: 72px;
     }
+    .imgContainer{
+        height: 400px;
+    }
 
 }
 

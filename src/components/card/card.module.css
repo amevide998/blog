@@ -43,3 +43,39 @@
     width: max-content;
     padding: 2px 0px ;
 }
+
+@media screen and (max-width: 1280px) {
+    .imgContainer {
+        height: 250px;
+    }
+
+    .cardTitle {
+        font-size: 28px;
+    }
+
+    .cardDescription {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .imgContainer {
+        height: 200px;
+    }
+
+    .container {
+        gap: 20px;
+    }
+
+    .cardTitle {
+        font-size: 24px;
+    }
+
+    .cardDescription {
+        font-size: 12px;
+    }
+
+    .textContainer {
+        gap: 10px;
+    }
+}
