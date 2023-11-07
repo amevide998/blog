@@ -37,3 +37,9 @@
     font-weight: 300;
     color: var(--softTextColor);
 }
+
+.readMoreLink {
+    border-bottom: 1px solid var(--softTextColor);
+    width: max-content;
+    padding: 2px 0px ;
+}
