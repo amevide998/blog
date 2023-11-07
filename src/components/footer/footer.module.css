@@ -1,2 +1,38 @@
 .container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--softTextColor);
+    padding: 20px 0px;
 }
+
+.info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}
+
+.links{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 60px;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listTitle {
+    font-size: 20px;
+    font-weight: 500;
+}
+
