@@ -1,0 +1,69 @@
+.container {
+
+}
+
+.infoContainer{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.textContainer{
+    flex: 1;
+}
+
+.userImageContainer{
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.imageContainer{
+    flex: 1;
+    height: 350px;
+    position: relative;
+}
+
+.user{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.userImage {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.title {
+    font-size: 64px;
+    margin-bottom: 50px;
+}
+
+.userTextContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--softTextColor);
+}
+
+.username {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.content {
+    margin-top: 60px;
+    display: flex;
+    gap: 50px;
+}
+
+.post {
+    flex: 5;
+
+}
+.description p {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
