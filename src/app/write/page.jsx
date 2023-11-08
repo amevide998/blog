@@ -5,12 +5,27 @@ import {useState} from "react";
 
 import 'react-quill/dist/quill.bubble.css';
 import ReactQuill from "react-quill";
+import {redirect} from "next/navigation";
+import {useSession} from "next-auth/react";
 
 export default function writePage () {
 
     const [open, setOpen] = useState(false);
 
     const [value, setValue] = useState("")
+
+    const {status} = useSession()
+
+    if(status === 'loading'){
+        return (
+            <div className={styles.loading}>
+                Loading ...
+            </div>
+        )
+    }
+    else if (status === 'authenticated') {
+        redirect('/')
+    }
 
     return (
         <div className={styles.container}>
