@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Comments (){
 
-    const status = "authentication"
+    const status = "authenticatio"
 
     return (
         <div className={styles.container}>
@@ -17,7 +17,12 @@ export default function Comments (){
                             <button className={styles.button}>Send</button>
                         </div>
                     )
-                    : (<Link href={"/login"}>Log in to comment</Link>)
+                    :
+                    (
+                        <div className={styles.write}>
+                            <Link href={"/login"} className={styles.login}>Log in to comment</Link>
+                        </div>
+                    )
             }
             <div className={styles.comments}>
                 <div className={styles.comment}>
