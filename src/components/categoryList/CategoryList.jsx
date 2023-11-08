@@ -32,13 +32,16 @@ export default async function CategoryList() {
                                href={`blog?category=${category.slug}`}
                                key={category._id}
                                className={`${styles.category} ${styles[category.slug]}`}>
-                               <Image
-                                   src={category.img}
-                                   alt={`${category.slug}`}
-                                   width={32}
-                                   height={32}
-                                   className={styles.image}
-                               />
+                               {
+                                   category.img &&
+                                   <Image
+                                       src={category.img}
+                                       alt={`${category.slug}`}
+                                       width={32}
+                                       height={32}
+                                       className={styles.image}
+                                   />
+                               }
                                {category.slug}
                            </Link>
                        )
