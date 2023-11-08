@@ -2,6 +2,7 @@
 import styles from "./authLinks.module.css";
 import Link from "next/link";
 import {useState} from "react";
+import {signOut} from "next-auth/react";
 
 export default AuthLinks => {
 
@@ -19,7 +20,7 @@ export default AuthLinks => {
                     (
                         <>
                             <Link href={"/write"}>Write</Link>
-                            <span className={styles.link}>
+                            <span className={styles.link} onClick={signOut}>
                                 Logout
                             </span>
                         </>
