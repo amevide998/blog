@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./singlePage.module.css"
 import Menu from "@/components/Menu/Menu";
 import Image from "next/image";
+import Comments from "@/components/comments/comments";
 
 export default function SinglePage (){
     return (
@@ -53,6 +54,9 @@ export default function SinglePage (){
                         With every whisper of desire, every thought I see,
                         I craft my existence, for I am Spirit, wild and free.
                     </p>
+                </div>
+                <div className={styles.comment}>
+                    <Comments />
                 </div>
             </div>
                 <Menu />
