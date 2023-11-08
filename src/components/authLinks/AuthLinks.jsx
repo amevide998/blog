@@ -12,7 +12,7 @@ export default AuthLinks => {
     return (
         <>
             {
-                status === "notauthenticated" ?
+                status === "authenticated" ?
                     (
                         <Link href={"/auth/login"} className={styles.link}>Login</Link>
                     ):
