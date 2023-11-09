@@ -91,22 +91,22 @@ export default function Menu() {
             <h2 className={styles.subTitle}>Discover by Topic</h2>
             <h1 className={styles.title}>Categories</h1>
             <div className={styles.categoryList}>
-                <Link href={"/blog?cat=style"} className={`${styles.categoryItem} ${styles.style}`}>
+                <Link href={"/blog?category=style"} className={`${styles.categoryItem} ${styles.style}`}>
                     Style
                 </Link>
-                <Link href={"/blog?cat=style"} className={`${styles.categoryItem} ${styles.culture}`}>
+                <Link href={"/blog?category=culture"} className={`${styles.categoryItem} ${styles.culture}`}>
                     Culture
                 </Link>
-                <Link href={"/blog?cat=style"} className={`${styles.categoryItem} ${styles.food}`}>
+                <Link href={"/blog?category=food"} className={`${styles.categoryItem} ${styles.food}`}>
                     Food
                 </Link>
-                <Link href={"/blog?cat=style"} className={`${styles.categoryItem} ${styles.coding}`}>
+                <Link href={"/blog?category=coding"} className={`${styles.categoryItem} ${styles.coding}`}>
                     Coding
                 </Link>
-                <Link href={"/blog?cat=style"} className={`${styles.categoryItem} ${styles.fashion}`}>
+                <Link href={"/blog?category=fashion"} className={`${styles.categoryItem} ${styles.fashion}`}>
                     Fashion
                 </Link>
-                <Link href={"/blog?cat=style"} className={`${styles.categoryItem} ${styles.travel}`}>
+                <Link href={"/blog?category=travel"} className={`${styles.categoryItem} ${styles.travel}`}>
                     Travel
                 </Link>
             </div>
