@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Menu() {
     return (
         <div className={styles.container}>
-            <h2 className={styles.subTitle}>What's Hot</h2>
+            <h2 className={styles.subTitle}>{`What's Hot`}</h2>
             <h1 className={styles.title}>Most Popular</h1>
             <div className={styles.items}>
                 <Link href={"/"} className={styles.item}>

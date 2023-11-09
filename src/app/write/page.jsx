@@ -3,8 +3,8 @@ import styles from './writePage.module.css';
 import Image from "next/image";
 import {useEffect, useState} from "react";
 
-import 'react-quill/dist/quill.bubble.css';
-import ReactQuill from "react-quill";
+// import 'react-quill/dist/quill.bubble.css';
+// import ReactQuill from "react-quill";
 import {redirect, useRouter} from "next/navigation";
 import {useSession} from "next-auth/react";
 
@@ -13,10 +13,17 @@ import {app} from "@/utils/firebase";
 
 const storage = getStorage(app);
 
+let ReactQuill;
+if (typeof window !== 'undefined') {
+    // Only import ReactQuill on the client side
+    ReactQuill = require("react-quill");
+    require("react-quill/dist/quill.bubble.css");
+}
+
 
 export default function WritePage () {
 
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(undefined);
     const [media, setMedia] = useState("")
     const [title, setTitle] = useState("")
     const [open, setOpen] = useState(false);
@@ -25,8 +32,6 @@ export default function WritePage () {
     const {status} = useSession()
 
     const router = useRouter();
-
-
 
     useEffect( ()=> {
         const upload = () => {

@@ -15,9 +15,10 @@ export default function Footer() {
                         <b>janjela</b>
                 </h1>
                 <p className={styles.description}>
-                        The world of tech is constantly changing.
-                        With this in mind,
-                        we've compiled our top ten tech quotes to inspire you.
+                    {`As I think, so I become, a creator of my own,
+                        In this tapestry of life, I've beautifully sewn.
+                        With every whisper of desire, every thought I see,
+                        I craft my existence, for I am Spirit, wild and free.`}
                 </p>
                 <div className={styles.icons}>
                     <Image src={'/facebook.png'} alt={'facebook logo '} width={18} height={18}/>

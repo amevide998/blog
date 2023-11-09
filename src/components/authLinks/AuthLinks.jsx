@@ -4,7 +4,7 @@ import Link from "next/link";
 import {useState} from "react";
 import {signOut, useSession} from "next-auth/react";
 
-export default AuthLinks => {
+export default function AuthLinks(){
 
     const {status} = useSession()
     const [open, setOpen] = useState(false);
