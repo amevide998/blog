@@ -14,7 +14,7 @@ import {app} from "@/utils/firebase";
 const storage = getStorage(app);
 
 
-export default function writePage () {
+export default function WritePage () {
 
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("")

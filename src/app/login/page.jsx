@@ -3,7 +3,7 @@ import styles from './loginPage.module.css';
 import {signIn, useSession} from "next-auth/react";
 import {redirect} from "next/navigation";
 
-export default function loginPage () {
+export default function LoginPage () {
     const {data, status} = useSession()
 
     if(status === 'loading'){
