@@ -3,34 +3,36 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 
-export const Card = () => {
+export const Card = ({key, item}) => {
+
     return (
-        <div className={styles.container}>
-            <div className={styles.imgContainer}>
-                <Image src={'/p1.jpeg'} alt={''} fill className={styles.postImage}/>
-            </div>
+        <div className={styles.container} key={key}>
+            {
+                item.img && (
+                    <div className={styles.imgContainer}>
+                        <Image src={item.img} alt={''} fill className={styles.postImage}/>
+                    </div>
+                )
+            }
             <div className={styles.textContainer}>
                 <div className={styles.detail}>
                     <span className={styles.date}>
-                        11.02.2023
+                        {item.createdAt.substring(0,10)}
                     </span>
                     &nbsp;-&nbsp;
                     <span className={styles.category}>
-                        CULTURE
+                        {item.catSlug}
                     </span>
                 </div>
-                <Link href={'/blog'}>
-                    <h1 className={styles.cardTitle}>I am Spirit, formless and free
+                <Link href={`/posts/${item.slug}`}>
+                    <h1 className={styles.cardTitle}>{item.title}
                     </h1>
                 </Link>
 
-                <p className={styles.cardDescription}>
-                    As I think, so I become, a creator of my own,
-                    In this tapestry of life, I've beautifully sewn.
-                    With every whisper of desire, every thought I see,
-                    I craft my existence, for I am Spirit, wild and free.
+                <p className={styles.cardDescription} dangerouslySetInnerHTML={{__html: `${item.description}`}}>
+                    {/*{item.description.substring(0, 100)}*/}
                 </p>
-                <Link href={'/href'} className={styles.readMoreLink}>
+                <Link href={`/posts/${item.slug}`} className={styles.readMoreLink}>
                     Read More
                 </Link>
             </div>
