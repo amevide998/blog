@@ -6,9 +6,10 @@ import CardList from "@/components/cardList/CardList";
 import Menu from "@/components/Menu/Menu";
 
 
-export default function Home({searchParam}) {
+export default function Home({searchParams}) {
 
-  const page = parseInt(searchParam.page) || 1;
+
+  const page = parseInt(searchParams?.page) || 1;
 
   return <div className={styles.container}>
     <Featured />
@@ -17,6 +18,5 @@ export default function Home({searchParam}) {
       <CardList page={page}/>
       <Menu />
     </div>
-
   </div>;
 }
