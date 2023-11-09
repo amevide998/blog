@@ -6,7 +6,7 @@ import prisma from "@/utils/connect";
 
 const getData = async () =>{
     const res = await fetch(
-        "http:localhost:3000/api/categories"
+        `${process.env.HOST}/api/categories`
             , {
             cache: "no-store"
         })

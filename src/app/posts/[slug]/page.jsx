@@ -8,7 +8,7 @@ const getData = async (slug) =>{
 
     try {
         const res = await fetch(
-            `http:localhost:3000/api/posts/${slug}`
+            `${process.env.HOST}/api/posts/${slug}`
             , {
                 cache: "no-store"
             })

@@ -22,7 +22,7 @@ export default function Comments ({postSlug}) {
 
     const status = useSession();
 
-    const {data,mutate, isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher);
+    const {data,mutate, isLoading} = useSWR(`${process.env.HOST}/api/comments?postSlug=${postSlug}`, fetcher);
 
     const [description, setDescription] = useState("");
 
@@ -32,7 +32,7 @@ export default function Comments ({postSlug}) {
             return alert("comment cannot be empty")
         }
 
-        await fetch("http://localhost:3000/api/comments", {
+        await fetch(`${process.env.HOST}/api/comments`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

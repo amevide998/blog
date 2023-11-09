@@ -8,7 +8,7 @@ const getData = async (page, category) =>{
 
     try {
         const res = await fetch(
-            `http:localhost:3000/api/posts?page=${page}&category=${category || ""}`
+            `${process.env.HOST}/api/posts?page=${page}&category=${category || ""}`
             , {
                 cache: "no-store"
             })
