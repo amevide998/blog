@@ -1,20 +1,66 @@
+"use client"
 import styles from "./comments.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import {useSession} from "next-auth/react";
+import useSWR from "swr";
+import {useState} from "react";
 
-export default function Comments (){
+const fetcher = async (url) => {
+    const res = await fetch(url);
 
-    const status = "authenticatio"
+    const data = await res.json()
+    if(!res.ok){
+        throw new Error(data.message)
+    }
+
+    return data;
+};
+
+
+export default function Comments ({postSlug}) {
+
+    const status = useSession();
+
+    const {data,mutate, isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher);
+
+    const [description, setDescription] = useState("");
+
+    const handleSubmit = async () => {
+
+        if(description.trim() == ""){
+            return alert("comment cannot be empty")
+        }
+
+        await fetch("http://localhost:3000/api/comments", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                postSlug,
+                description,
+            }),
+        })
+
+        await mutate();
+    }
 
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Comments</h1>
             {
-                (status === "authentication") ?
+                (status !== "authentication") ?
                     (
                         <div className={styles.write}>
-                            <textarea placeholder={"write a comment for this article"} className={styles.input}/>
-                            <button className={styles.button}>Send</button>
+                            <textarea
+                                placeholder={"write a comment for this article"}
+                                className={styles.input}
+                                onChange={e=> setDescription(e.target.value)}
+                            />
+                            <button className={styles.button}
+                                    onClick={handleSubmit}
+                            >Send</button>
                         </div>
                     )
                     :
@@ -25,86 +71,33 @@ export default function Comments (){
                     )
             }
             <div className={styles.comments}>
-                <div className={styles.comment}>
-                    <div className={styles.user}>
-                        <Image src={'/p1.jpeg'} alt={"profile"} width={50} height={50}/>
-                        <div className={styles.userInfo}>
-                            <span className={styles.username}>Michael Corleone</span>
-                            <span className={styles.date}>11.02.2023</span>
+                {
+                    isLoading? "loading..." : data?.map((item) => (
+                        <div className={styles.comment} key={item._id}>
+                            <div className={styles.user}>
+                                <Image src={item?.user.image} alt={"profile"} width={50} height={50}/>
+                                <div className={styles.userInfo}>
+                                    <span className={styles.username}>{item?.user?.name}</span>
+                                    <span className={styles.date}>{item?.createdAt.substring(0,10)}</span>
+                                </div>
+                            </div>
+                            <p className={styles.description}>
+                                {item?.description}
+                            </p>
                         </div>
-                    </div>
-                    <p className={styles.description}>
-                        As I think, so I become, a creator of my own,
-                        In this tapestry of life, I've beautifully sewn.
-                        With every whisper of desire, every thought I see,
-                        I craft my existence, for I am Spirit, wild and free.
-                    </p>
-                </div>
-
-                <div className={styles.comment}>
-                    <div className={styles.user}>
-                        <Image src={'/p1.jpeg'} alt={"profile"} width={50} height={50}/>
-                        <div className={styles.userInfo}>
-                            <span className={styles.username}>Michael Corleone</span>
-                            <span className={styles.date}>11.02.2023</span>
-                        </div>
-                    </div>
-                    <p className={styles.description}>
-                        As I think, so I become, a creator of my own,
-                        In this tapestry of life, I've beautifully sewn.
-                        With every whisper of desire, every thought I see,
-                        I craft my existence, for I am Spirit, wild and free.
-                    </p>
-                </div>
-
-                <div className={styles.comment}>
-                    <div className={styles.user}>
-                        <Image src={'/p1.jpeg'} alt={"profile"} width={50} height={50}/>
-                        <div className={styles.userInfo}>
-                            <span className={styles.username}>Michael Corleone</span>
-                            <span className={styles.date}>11.02.2023</span>
-                        </div>
-                    </div>
-                    <p className={styles.description}>
-                        As I think, so I become, a creator of my own,
-                        In this tapestry of life, I've beautifully sewn.
-                        With every whisper of desire, every thought I see,
-                        I craft my existence, for I am Spirit, wild and free.
-                    </p>
-                </div>
-
-                <div className={styles.comment}>
-                    <div className={styles.user}>
-                        <Image src={'/p1.jpeg'} alt={"profile"} width={50} height={50}/>
-                        <div className={styles.userInfo}>
-                            <span className={styles.username}>Michael Corleone</span>
-                            <span className={styles.date}>11.02.2023</span>
-                        </div>
-                    </div>
-                    <p className={styles.description}>
-                        As I think, so I become, a creator of my own,
-                        In this tapestry of life, I've beautifully sewn.
-                        With every whisper of desire, every thought I see,
-                        I craft my existence, for I am Spirit, wild and free.
-                    </p>
-                </div>
-
-                <div className={styles.comment}>
-                    <div className={styles.user}>
-                        <Image src={'/p1.jpeg'} alt={"profile"} width={50} height={50}/>
-                        <div className={styles.userInfo}>
-                            <span className={styles.username}>Michael Corleone</span>
-                            <span className={styles.date}>11.02.2023</span>
-                        </div>
-                    </div>
-                    <p className={styles.description}>
-                        As I think, so I become, a creator of my own,
-                        In this tapestry of life, I've beautifully sewn.
-                        With every whisper of desire, every thought I see,
-                        I craft my existence, for I am Spirit, wild and free.
-                    </p>
-                </div>
-
+                    ))
+                }
+                {
+                    !isLoading && (
+                        data?.length === 0 && (
+                            <div className={styles.comment}>
+                                <p className={styles.description}>
+                                    No comments yet
+                                </p>
+                            </div>
+                        )
+                    )
+                }
             </div>
         </div>
     )
