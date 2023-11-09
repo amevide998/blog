@@ -4,24 +4,31 @@ import Pagination from "@/components/pagination/Pagination";
 import Image from "next/image";
 import {Card} from "@/components/card/Card";
 
-const getData = async (page) =>{
-    const res = await fetch(
-        `http:localhost:3000/api/posts?page=${page}`
-        , {
-            cache: "no-store"
-        })
+const getData = async (page, category) =>{
 
-    if(!res.ok){
-        throw new Error("Failed")
+    try {
+        const res = await fetch(
+            `http:localhost:3000/api/posts?page=${page}&category=${category || ""}`
+            , {
+                cache: "no-store"
+            })
+
+        return res.json();
+
+    }catch (err){
+        console.log('opps ada error : ', err)
     }
-
-    return res.json();
 }
 
 
-export default async function CardList({page}) {
+export default async function CardList({page, category}) {
 
-    const data = await getData(page);
+    const {posts, count} = await getData(page, category)
+
+    const POST_PER_PAGE = 2
+
+    const hasPrev = page > 1;
+    const hasNext = POST_PER_PAGE * page < count;
 
     return (
         <div className={styles.container}>
@@ -29,13 +36,13 @@ export default async function CardList({page}) {
                 Recent Post
             </h1>
             <div className={styles.posts}>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                {
+                    posts?.map((item) => (
+                        <Card key={item._id} item={item}/>
+                    ))
+                }
             </div>
-            <Pagination />
+            <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext}/>
         </div>
     );
 }
