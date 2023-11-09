@@ -6,16 +6,15 @@ import {signOut, useSession} from "next-auth/react";
 
 export default AuthLinks => {
 
-    const status = useSession()
-
+    const {status} = useSession()
     const [open, setOpen] = useState(false);
 
     return (
         <>
             {
-                status === "authenticated" ?
+                status !== "authenticated" ?
                     (
-                        <Link href={"/auth/login"} className={styles.link}>Login</Link>
+                        <Link href={"/login"} className={styles.link}>Login</Link>
                     ):
                     (
                         <>
@@ -38,9 +37,9 @@ export default AuthLinks => {
                         <Link href={"/"}>Contact</Link>
                         <Link href={"/"}>About</Link>
                         {
-                            status === "unauthenticated" ?
+                            status !== "authenticated" ?
                                 (
-                                    <Link href={"/auth/login"}>Login</Link>
+                                    <Link href={"/login"}>Login</Link>
                                 ):
                                 (
                                     <>
