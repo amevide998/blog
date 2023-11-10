@@ -13,7 +13,7 @@ export default function Home({searchParams}) {
 
   return <div className={styles.container}>
     <Featured />
-    {/*<CategoryList />*/}
+    <CategoryList />
     {/*<div className={styles.content}>*/}
     {/*  <CardList page={page}/>*/}
     {/*  <Menu />*/}

@@ -19,7 +19,6 @@ const getData = async () =>{
 }
 
 export default async function CategoryList() {
-
     const data = await getData();
     return (
         <div className={styles.container}>
@@ -28,9 +27,9 @@ export default async function CategoryList() {
                 {
                     data?.map((category)=>{
                        return (
+                           <div key={category._id}>
                            <Link
                                href={`blog?category=${category.slug}`}
-                               key={category._id}
                                className={`${styles.category} ${styles[category.slug]}`}>
                                {
                                    category.img &&
@@ -44,6 +43,7 @@ export default async function CategoryList() {
                                }
                                {category.slug}
                            </Link>
+                           </div>
                        )
                     })
                 }
