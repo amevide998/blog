@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
                   {/*        <Footer />*/}
                   {/*    </div>*/}
                   {/*</div>*/}
-                  <h1>welcome</h1>
+                  <h1>tes deployment on vercel</h1>
       {/*        </ThemeProvider>*/}
       {/*    </ThemeContextProvider>*/}
       {/*</AuthProvider>*/}
