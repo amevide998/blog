@@ -23,7 +23,7 @@ export default function LoginPage () {
             <div className={styles.container}>
                 <div className={styles.wrapper}>
                     <div className={styles.socialButton}
-                         onClick={async () => await signIn("google")}
+                         onClick={async () => await signIn()}
                     >
                         Continue With Google
                     </div>
