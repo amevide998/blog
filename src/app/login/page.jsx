@@ -4,6 +4,7 @@ import {signIn, useSession} from "next-auth/react";
 import {redirect} from "next/navigation";
 
 export default function LoginPage () {
+
     const {data, status} = useSession()
     // const status = "authenticated"
 
@@ -22,7 +23,7 @@ export default function LoginPage () {
             <div className={styles.container}>
                 <div className={styles.wrapper}>
                     <div className={styles.socialButton}
-                         onClick={async () => signIn("google")}
+                         onClick={async () => await signIn("google")}
                     >
                         Continue With Google
                     </div>
