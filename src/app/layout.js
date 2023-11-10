@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-      <AuthProvider>
-          <ThemeContextProvider>
-              <ThemeProvider>
+      {/*<AuthProvider>*/}
+      {/*    <ThemeContextProvider>*/}
+      {/*        <ThemeProvider>*/}
                   {/*<div className="container">*/}
                   {/*    <div className="wrapper">*/}
                   {/*        <Navbar />*/}
@@ -29,9 +29,9 @@ export default function RootLayout({ children }) {
                   {/*    </div>*/}
                   {/*</div>*/}
                   <h1>welcome</h1>
-              </ThemeProvider>
-          </ThemeContextProvider>
-      </AuthProvider>
+      {/*        </ThemeProvider>*/}
+      {/*    </ThemeContextProvider>*/}
+      {/*</AuthProvider>*/}
       </body>
     </html>
   )
