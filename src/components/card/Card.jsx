@@ -29,7 +29,7 @@ export const Card = ({key, item}) => {
                     </h1>
                 </Link>
 
-                <div className={styles.cardDescription} dangerouslySetInnerHTML={{__html: `${item.description}`}}>
+                <div     className={styles.cardDescription} dangerouslySetInnerHTML={{__html: `${item.description}`}}>
                     {/*{item.description.substring(0, 100)}*/}
                 </div>
                 <Link href={`/posts/${item.slug}`} className={styles.readMoreLink}>

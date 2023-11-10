@@ -4,8 +4,8 @@ import {signIn, useSession} from "next-auth/react";
 import {redirect} from "next/navigation";
 
 export default function LoginPage () {
-    // const {data, status} = useSession()
-    const status = "authenticated"
+    const {data, status} = useSession()
+    // const status = "authenticated"
 
     if(status === 'loading'){
         return (
