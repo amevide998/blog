@@ -21,14 +21,13 @@ export default function RootLayout({ children }) {
       {/*<AuthProvider>*/}
       {/*    <ThemeContextProvider>*/}
       {/*        <ThemeProvider>*/}
-                  {/*<div className="container">*/}
-                  {/*    <div className="wrapper">*/}
-                  {/*        <Navbar />*/}
-                  {/*        {children}*/}
-                  {/*        <Footer />*/}
-                  {/*    </div>*/}
-                  {/*</div>*/}
-                  <h1>tes deployment on vercel</h1>
+                  <div className="container">
+                      <div className="wrapper">
+                          <Navbar />
+                          {children}
+                          <Footer />
+                      </div>
+                  </div>
       {/*        </ThemeProvider>*/}
       {/*    </ThemeContextProvider>*/}
       {/*</AuthProvider>*/}

@@ -29,7 +29,7 @@ export default function WritePage () {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
 
-    const {status} = useSession()
+    const {status} = "authenticated"//useSession()
 
     const router = useRouter();
 
