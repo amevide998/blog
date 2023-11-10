@@ -1,12 +1,12 @@
 "use client"
 import styles from './loginPage.module.css';
 import {signIn, useSession} from "next-auth/react";
-import {redirect} from "next/navigation";
+import {redirect, useRouter} from "next/navigation";
 
 export default function LoginPage () {
 
     const {data, status} = useSession()
-    // const status = "authenticated"
+    const router = useRouter()
 
     if(status === 'loading'){
         return (
@@ -16,7 +16,7 @@ export default function LoginPage () {
         )
     }
     else if (status === 'authenticated') {
-        redirect('/')
+        router.push('/')
     }
     else {
         return (
